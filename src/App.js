@@ -1,12 +1,15 @@
 
 import './App.css';
-import './components/Map.css';
-import { Map } from './components/Map';
+import './components/Mapa.css';
+import './components/Header.css';
+import { Mapa } from './components/Mapa';
+import { Header } from './components/Header';
 
 function App() {
   return (
     <div className="App">
-     <Map/>
+      <Header/>
+     <Mapa/>
     </div>
   );
 }

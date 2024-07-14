@@ -1,0 +1,20 @@
+
+header{
+display: flex;
+
+ position: fixed;
+ top: 0;
+ width: 100%;
+ z-index: 1000;
+ height: 14vh;
+ background-image: linear-gradient(rgba(11, 11, 11, 0.817), rgba(246, 191, 246, 0));
+align-self: flex-start;
+}
+
+
+.logo{
+    width: 8.9%;
+    height: auto;
+    margin-left: 45px;
+   
+}
