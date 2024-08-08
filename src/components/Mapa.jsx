@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import "ol/ol.css";
 import Map from 'ol/Map.js';
 import OSM from 'ol/source/OSM.js';
@@ -12,6 +12,8 @@ import VectorSource from 'ol/source/Vector';
 import { Icon, Style } from 'ol/style.js';
 
 export const Mapa = () => {
+
+  const [coordenadas, setCoordenadas]= useState([]); 
 
 
   let map;
@@ -115,7 +117,7 @@ export const Mapa = () => {
 
   const addMarker = (coordinate) =>{
  
-    
+
     const startMarker = new Feature({
       type: 'point',
       geometry: new Point(coordinate)
@@ -134,18 +136,36 @@ export const Mapa = () => {
   }
 
   let arrayCoordenadas = [];
-
+  let arrayCoordenadas1;
 
   const storeMarker = (coordinate) => {  
-  //array de las coordenadas
+ 
+ {/* //array de las coordenadas
   // guardar en Storage
   arrayCoordenadas.push(coordinate);
 
   localStorage.setItem("listaMarkers",JSON.stringify(
     arrayCoordenadas
-  ))
+  )) */}
+
+ 
+  setCoordenadas(prevCoordenadas=>{
+    const nuevoArrayCoord =[...prevCoordenadas, coordinate];
+    console.log(nuevoArrayCoord)
+    localStorage.setItem("listaMarkers",JSON.stringify( nuevoArrayCoord))
+    return nuevoArrayCoord;
+  });
+  
 
   }
+
+
+
+
+
+
+
+
 
   return (
     <>
