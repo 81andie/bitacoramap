@@ -16,6 +16,14 @@ export const Mapa = () => {
 
   let map;
 
+  const vectorSource = new VectorSource({
+    features: []
+  });
+
+  const vectorLayer = new VectorLayer({
+    source: vectorSource
+  });
+
 
   const zoomOut = () => {
 
@@ -69,34 +77,15 @@ export const Mapa = () => {
 
     })
 
+
     map.on('click', function (evt) {
-
-      let coordinate = evt.coordinate;
-
-      const startMarker = new Feature({
-        type: 'point',
-        geometry: new Point(coordinate)
-      });
+     storeMarker(evt.coordinate);
+     addMarker(evt.coordinate);
       
-      startMarker.setStyle(new Style({
-        image: new Icon({
-          anchor: [0.6, 0.5],
-          src: 'marker.png',
-          scale: 0.3
-        })
-      }))
-
-      vectorSource.addFeature(startMarker);
-
     });
 
-    const vectorSource = new VectorSource({
-      features: []
-    });
 
-    const vectorLayer = new VectorLayer({
-      source: vectorSource
-    });
+  
     /*
     
         const vectorLayer = new VectorLayer({
@@ -109,8 +98,6 @@ export const Mapa = () => {
 
     map.addLayer(vectorLayer);
 
-
-
     /*
         mapa -> vista -> zoom / centro
         mapa.getView -> recuperas la vista
@@ -118,13 +105,47 @@ export const Mapa = () => {
     
         el zoom esta dentro de la vista. la vista esta dentro del mapa.
     */
-   
 
 
     return () => {
       map.setTarget(null);
     };
   }, []);
+
+
+  const addMarker = (coordinate) =>{
+ 
+    
+    const startMarker = new Feature({
+      type: 'point',
+      geometry: new Point(coordinate)
+    });
+    
+    startMarker.setStyle(new Style({
+      image: new Icon({
+        anchor: [0.6, 0.5],
+        src: 'marker.png',
+        scale: 0.3
+      })
+    }))
+
+    vectorSource.addFeature(startMarker);
+
+  }
+
+  let arrayCoordenadas = [];
+
+
+  const storeMarker = (coordinate) => {  
+  //array de las coordenadas
+  // guardar en Storage
+  arrayCoordenadas.push(coordinate);
+
+  localStorage.setItem("listaMarkers",JSON.stringify(
+    arrayCoordenadas
+  ))
+
+  }
 
   return (
     <>
