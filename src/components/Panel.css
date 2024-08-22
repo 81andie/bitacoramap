@@ -1,0 +1,56 @@
+.contenedor-panel{
+    position: absolute;
+    width: 300px;
+    height: 100vh;
+    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.808);
+    z-index: 3;
+}
+
+.contenedor-titulo{
+    margin-top: 60px;
+    
+}
+
+.subcontenedor-btn{
+    display: flex;
+    justify-content: right;
+   
+}
+
+.btn-cerrar{
+    width: 40px;
+    height: 25px;
+    padding: 5px;
+    border: none;
+    background-color: red;
+    text-align: center;
+    color: white;
+    border-radius: 50px;
+}
+
+.contenedor-textarea{
+    width: 100%;
+    height:20vh;
+}
+
+.btn-grupo{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.btn-cancelar{
+    padding: 6px;
+    background-color: rgb(234, 231, 231);
+    border: none;
+    border-radius: 4px
+}
+
+.btn-guardar{
+    background-color: rgb(87, 161, 244);
+    border: none;
+    border-radius: 4px
+}
+

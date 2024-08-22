@@ -13,7 +13,7 @@ import { Icon, Style } from 'ol/style.js';
 
 export const Mapa = () => {
 
-  const [coordenadas, setCoordenadas]= useState([]); 
+  const [coordenadas, setCoordenadas] = useState([]);
 
 
   let map;
@@ -47,10 +47,7 @@ export const Mapa = () => {
       const view = map.getView();
       const zoom = view.getZoom();
       view.setZoom(zoom + 1);
-
-
     }
-
   };
 
   useEffect(() => {
@@ -71,8 +68,6 @@ export const Mapa = () => {
 
       });
 
-
-
     map.on('moveend', () => {
       console.log(map.getView().getCenter());
       console.log(map.getView().getZoom())
@@ -81,13 +76,12 @@ export const Mapa = () => {
 
 
     map.on('click', function (evt) {
-     storeMarker(evt.coordinate);
-     addMarker(evt.coordinate);
-      
+      storeMarker(evt.coordinate);
+      addMarker(evt.coordinate);
+
     });
 
 
-  
     /*
     
         const vectorLayer = new VectorLayer({
@@ -106,7 +100,11 @@ export const Mapa = () => {
         view.getZoom -> recuperas el zoom
     
         el zoom esta dentro de la vista. la vista esta dentro del mapa.
+
+
     */
+
+    obtenerMarkers();
 
 
     return () => {
@@ -115,14 +113,13 @@ export const Mapa = () => {
   }, []);
 
 
-  const addMarker = (coordinate) =>{
- 
+  const addMarker = (coordinate) => {
 
     const startMarker = new Feature({
       type: 'point',
       geometry: new Point(coordinate)
     });
-    
+
     startMarker.setStyle(new Style({
       image: new Icon({
         anchor: [0.6, 0.5],
@@ -135,30 +132,34 @@ export const Mapa = () => {
 
   }
 
-  let arrayCoordenadas = [];
-  let arrayCoordenadas1;
 
-  const storeMarker = (coordinate) => {  
- 
- {/* //array de las coordenadas
-  // guardar en Storage
-  arrayCoordenadas.push(coordinate);
+  const storeMarker = (coordinate) => {
 
-  localStorage.setItem("listaMarkers",JSON.stringify(
-    arrayCoordenadas
-  )) */}
+    /* //array de las coordenadas
+     // guardar en Storage
+     arrayCoordenadas.push(coordinate);
+   
+     localStorage.setItem("listaMarkers",JSON.stringify(
+       arrayCoordenadas
+     )) */
 
- 
-  setCoordenadas(prevCoordenadas=>{
-    const nuevoArrayCoord =[...prevCoordenadas, coordinate];
-    console.log(nuevoArrayCoord)
-    localStorage.setItem("listaMarkers",JSON.stringify( nuevoArrayCoord))
-    return nuevoArrayCoord;
-  });
-  
+
+    setCoordenadas(prevCoordenadas => {
+      const nuevoArrayCoord = [...prevCoordenadas, coordinate];
+      console.log(nuevoArrayCoord)
+      localStorage.setItem("listaMarkers", JSON.stringify(nuevoArrayCoord))
+      return nuevoArrayCoord;
+    });
+
 
   }
 
+
+  const obtenerMarkers = ()=>{
+    const markers = JSON.parse( localStorage.getItem('listaMarkers') || "[]");
+  setCoordenadas(markers)
+    markers.forEach(coord=> addMarker(coord));
+  }
 
 
 
