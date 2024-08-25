@@ -10,8 +10,11 @@ import Point from 'ol/geom/Point.js';
 import { Vector as VectorLayer } from 'ol/layer';
 import VectorSource from 'ol/source/Vector';
 import { Icon, Style } from 'ol/style.js';
+import { useMarkerContext, useStoreMarkersContext } from './markersProvider';
 
 export const Mapa = () => {
+
+  const markers = useMarkerContext();
 
   const [coordenadas, setCoordenadas] = useState([]);
 
@@ -134,15 +137,6 @@ export const Mapa = () => {
 
 
   const storeMarker = (coordinate) => {
-
-    /* //array de las coordenadas
-     // guardar en Storage
-     arrayCoordenadas.push(coordinate);
-   
-     localStorage.setItem("listaMarkers",JSON.stringify(
-       arrayCoordenadas
-     )) */
-
 
     setCoordenadas(prevCoordenadas => {
       const nuevoArrayCoord = [...prevCoordenadas, coordinate];

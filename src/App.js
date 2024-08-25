@@ -14,7 +14,6 @@ function App() {
       <Header/>
       <Panel/>
       <Mapa/>
-
     </div>
   );
 }
