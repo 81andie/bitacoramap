@@ -1,15 +1,19 @@
 .contenedor-panel{
-    position: absolute;
-    width: 300px;
+    position: absolute; 
     height: 100vh;
-    padding: 25px;
-    background-color: rgba(255, 255, 255, 0.808);
+    padding: 35px;
+    background-color: rgba(255, 255, 255, 0.557);
     z-index: 3;
 }
 
 .contenedor-titulo{
-    margin-top: 60px;
-    
+    margin-top: 40px;
+    font-size: 1rem;
+}
+
+.contenedor-span{
+    font-size: 0.8rem;
+    font-weight: lighter;
 }
 
 .subcontenedor-btn{
@@ -43,12 +47,13 @@
 
 .btn-cancelar{
     padding: 6px;
-    background-color: rgb(234, 231, 231);
+    background-color: rgb(193, 189, 189);
     border: none;
     border-radius: 4px
 }
 
 .btn-guardar{
+    padding: 6px;
     background-color: rgb(87, 161, 244);
     border: none;
     border-radius: 4px

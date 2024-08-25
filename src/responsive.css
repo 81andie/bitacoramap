@@ -1,0 +1,60 @@
+@media (min-width:320px) {
+
+    .logo{
+        width: 22%;
+        height: auto;
+    }
+
+    .contenedor-panel{
+        width: 100%;
+    }
+
+    .subcontenedor-btn{
+        margin-top: 45px;
+    }
+
+    
+}
+
+@media (min-width:481px) {
+    .logo{
+        width: 25%;
+        height: auto;
+    }
+
+    .contenedor-panel{
+        width: 100%;
+    }
+
+}
+
+@media(min-width: 641px) {
+
+    .logo{
+        width: 18%;
+        height: auto;
+    }
+
+    .contenedor-panel{
+        width: 40%;
+    }
+
+    
+
+    
+}
+
+@media(min-width: 1024px) {
+
+    .logo{
+        width: 8%;
+        height: auto;
+    }
+
+    .contenedor-panel{
+        width: 30%;
+    }
+
+   
+
+}

@@ -1,5 +1,6 @@
 
 import './App.css';
+import './responsive.css';
 import './components/Mapa.css';
 import './components/Header.css';
 import './components/Panel.css';
@@ -12,7 +13,7 @@ function App() {
     <div className="App">
       <Header/>
       <Panel/>
-     <Mapa/>
+      <Mapa/>
 
     </div>
   );
