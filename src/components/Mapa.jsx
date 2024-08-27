@@ -140,7 +140,7 @@ export const Mapa = () => {
 
 
 
-  const obtenerMarkers = ()=>{
+  const obtenerMarkers = () =>{
     const markersRecuperados = JSON.parse( localStorage.getItem('listaMarkers') || "[]");
     storeMarker(markersRecuperados)
    

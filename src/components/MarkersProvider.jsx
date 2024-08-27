@@ -1,5 +1,5 @@
 
-import React, { useState , useContext} from "react";
+import React, { useState , useContext, useEffect} from "react";
 
 
 
@@ -18,8 +18,7 @@ export function MarkersProvider({children}) {
 
     const [markers, setMarkers] = useState([]);
     
-
-
+let array1=[];
     const storeMarker = (coordinate) => {
         
         /*setMarkers(prevCoordenadas => {
@@ -28,23 +27,20 @@ export function MarkersProvider({children}) {
             localStorage.setItem("listaMarkers", JSON.stringify(nuevoArrayCoord))
             return nuevoArrayCoord;
         });*/
+      
+      
+ 
+       setMarkers(...coordinate, markers)
+      
 
-        
-        console.log("markers:")
-        console.log(markers)
-
-
-        setMarkers([...markers, coordinate]);
         localStorage.setItem("listaMarkers", JSON.stringify(markers))
-
-        console.log("markers2:")
-        console.log(markers)
+       
     }
 
 
     return (
 
-        <markerContext.Provider value={markers}>
+        <markerContext.Provider value={{markers}}>
             <storeMarkersContext.Provider value={storeMarker}>
                 {children}
             </storeMarkersContext.Provider>
