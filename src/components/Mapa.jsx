@@ -18,7 +18,7 @@ export const Mapa = () => {
   const storeMarker = useStoreMarkersContext();
 
 
-
+console.log(markers);
 
   let map;
 
@@ -140,11 +140,12 @@ export const Mapa = () => {
 
 
 
-  const obtenerMarkers = () =>{
+ const obtenerMarkers = () =>{
     const markersRecuperados = JSON.parse( localStorage.getItem('listaMarkers') || "[]");
-    storeMarker(markersRecuperados)
-   
+    storeMarker(markersRecuperados,markers)
     markersRecuperados.forEach(coord=> addMarker(coord));
+
+    console.log(markersRecuperados);
   }
 
 

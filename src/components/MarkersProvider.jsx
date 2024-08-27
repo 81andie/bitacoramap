@@ -1,5 +1,5 @@
 
-import React, { useState , useContext, useEffect} from "react";
+import React, { useState , useContext} from "react";
 
 
 
@@ -17,25 +17,21 @@ export function useStoreMarkersContext (){
 export function MarkersProvider({children}) {
 
     const [markers, setMarkers] = useState([]);
-    
-let array1=[];
+
     const storeMarker = (coordinate) => {
         
-        /*setMarkers(prevCoordenadas => {
+      setMarkers(prevCoordenadas => {
             const nuevoArrayCoord = [...prevCoordenadas, coordinate];
             console.log(nuevoArrayCoord)
             localStorage.setItem("listaMarkers", JSON.stringify(nuevoArrayCoord))
             return nuevoArrayCoord;
-        });*/
+        });
       
       
  
-       setMarkers(...coordinate, markers)
-      
+  
 
-        localStorage.setItem("listaMarkers", JSON.stringify(markers))
-       
-    }
+}
 
 
     return (
