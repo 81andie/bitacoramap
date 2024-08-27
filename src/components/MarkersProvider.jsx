@@ -14,21 +14,31 @@ export function useStoreMarkersContext (){
     return useContext(storeMarkersContext);
 }
 
-export function MarkersProvider() {
+export function MarkersProvider({children}) {
 
-    const [markers, setMarkers] = useState(null);
-
+    const [markers, setMarkers] = useState([]);
+    
 
 
     const storeMarker = (coordinate) => {
-        setCoordenadas(prevCoordenadas => {
+        
+        /*setMarkers(prevCoordenadas => {
             const nuevoArrayCoord = [...prevCoordenadas, coordinate];
             console.log(nuevoArrayCoord)
             localStorage.setItem("listaMarkers", JSON.stringify(nuevoArrayCoord))
             return nuevoArrayCoord;
-        });
+        });*/
+
+        
+        console.log("markers:")
+        console.log(markers)
 
 
+        setMarkers([...markers, coordinate]);
+        localStorage.setItem("listaMarkers", JSON.stringify(markers))
+
+        console.log("markers2:")
+        console.log(markers)
     }
 
 

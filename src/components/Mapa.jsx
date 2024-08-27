@@ -10,13 +10,14 @@ import Point from 'ol/geom/Point.js';
 import { Vector as VectorLayer } from 'ol/layer';
 import VectorSource from 'ol/source/Vector';
 import { Icon, Style } from 'ol/style.js';
-import { useMarkerContext, useStoreMarkersContext } from './markersProvider';
+import { useMarkerContext, useStoreMarkersContext } from './MarkersProvider';
 
 export const Mapa = () => {
 
   const markers = useMarkerContext();
+  const storeMarker = useStoreMarkersContext();
 
-  const [coordenadas, setCoordenadas] = useState([]);
+
 
 
   let map;
@@ -136,23 +137,14 @@ export const Mapa = () => {
   }
 
 
-  const storeMarker = (coordinate) => {
 
-    setCoordenadas(prevCoordenadas => {
-      const nuevoArrayCoord = [...prevCoordenadas, coordinate];
-      console.log(nuevoArrayCoord)
-      localStorage.setItem("listaMarkers", JSON.stringify(nuevoArrayCoord))
-      return nuevoArrayCoord;
-    });
-
-
-  }
 
 
   const obtenerMarkers = ()=>{
-    const markers = JSON.parse( localStorage.getItem('listaMarkers') || "[]");
-  setCoordenadas(markers)
-    markers.forEach(coord=> addMarker(coord));
+    const markersRecuperados = JSON.parse( localStorage.getItem('listaMarkers') || "[]");
+    storeMarker(markersRecuperados)
+   
+    markersRecuperados.forEach(coord=> addMarker(coord));
   }
 
 
