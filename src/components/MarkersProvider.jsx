@@ -17,6 +17,8 @@ export function useStoreMarkersContext() {
 export function MarkersProvider({ children }) {
 
     const [markers, setMarkers] = useState([]);
+//coordinate= null 
+
 
     const storeMarker = (coordinate = null) => {
 
@@ -27,12 +29,15 @@ export function MarkersProvider({ children }) {
                return nuevoArrayCoord;
            });*/
 
-        let storedMarkers = localStorage.getItem("listaMarkers");
-        let updatedMarkers = storedMarkers ? JSON.parse(storedMarkers) : [];
+     
+     
+      let storedMarkers = localStorage.getItem("listaMarkers");
+      let updatedMarkers = storedMarkers ? JSON.parse(storedMarkers) : [];
+
 
         if (coordinate) {
-            updatedMarkers = [...updatedMarkers, coordinate];
-            localStorage.setItem("listaMarkers", JSON.stringify(updatedMarkers));
+           updatedMarkers = [...updatedMarkers, coordinate];
+           localStorage.setItem("listaMarkers", JSON.stringify(updatedMarkers));
         }
 
         setMarkers(updatedMarkers);
