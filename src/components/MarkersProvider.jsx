@@ -9,7 +9,7 @@ const storeMarkersContext = React.createContext();
 export function useMarkerContext() {
     return useContext(markerContext);
 }
-
+  
 export function useStoreMarkersContext() {
     return useContext(storeMarkersContext);
 }
@@ -20,7 +20,7 @@ export function MarkersProvider({ children }) {
 //coordinate= null 
 
 
-    const storeMarker = (coordinate = null) => {
+    const storeMarker = (coordinate= null) => {
 
         /* setMarkers(prevCoordenadas => {
                const nuevoArrayCoord = [...prevCoordenadas, coordinate];
@@ -32,10 +32,10 @@ export function MarkersProvider({ children }) {
      
      
       let storedMarkers = localStorage.getItem("listaMarkers");
-      let updatedMarkers = storedMarkers ? JSON.parse(storedMarkers) : [];
+      let updatedMarkers = storedMarkers ? JSON.parse(storedMarkers): [];
 
 
-        if (coordinate) {
+        if (coordinate.length > 0) {
            updatedMarkers = [...updatedMarkers, coordinate];
            localStorage.setItem("listaMarkers", JSON.stringify(updatedMarkers));
         }
@@ -44,9 +44,7 @@ export function MarkersProvider({ children }) {
 
     }
 
-    useEffect(() => {
-        storeMarker();
-    }, []);
+
 
 
 

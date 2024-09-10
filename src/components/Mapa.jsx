@@ -83,6 +83,8 @@ console.log(markers);
       storeMarker(evt.coordinate);
       addMarker(evt.coordinate);
 
+      console.log(markers);
+
     });
 
 
