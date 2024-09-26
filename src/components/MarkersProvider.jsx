@@ -29,8 +29,7 @@ export function MarkersProvider({ children }) {
                return nuevoArrayCoord;
            });*/
 
-     
-     
+
       let storedMarkers = localStorage.getItem("listaMarkers");
       let updatedMarkers = storedMarkers ? JSON.parse(storedMarkers): [];
 
