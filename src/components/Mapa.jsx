@@ -11,6 +11,7 @@ import { Vector as VectorLayer } from 'ol/layer';
 import VectorSource from 'ol/source/Vector';
 import { Icon, Style } from 'ol/style.js';
 import { useMarkerContext, useStoreMarkersContext} from './MarkersProvider';
+import { v4 as uuidv4 } from 'uuid';
 
 export const Mapa = () => {
 
@@ -70,7 +71,7 @@ console.log(markers);
           zoom: 18,
         }),
 
-      });
+      }, []);
 
     map.on('moveend', () => {
       console.log(map.getView().getCenter());
@@ -80,6 +81,7 @@ console.log(markers);
 
 
     map.on('click', function (evt) {
+     
       storeMarker(evt.coordinate);
       addMarker(evt.coordinate);
 
@@ -121,9 +123,13 @@ console.log(markers);
 
   const addMarker = (coordinate) => {
 
+    
+
     const startMarker = new Feature({
       type: 'point',
-      geometry: new Point(coordinate)
+      geometry: new Point(coordinate),
+      
+
     });
 
     startMarker.setStyle(new Style({
@@ -135,6 +141,7 @@ console.log(markers);
     }))
 
     vectorSource.addFeature(startMarker);
+    
 
   }
 
@@ -143,11 +150,16 @@ console.log(markers);
 
 
  const obtenerMarkers = () =>{
-    const markersRecuperados = JSON.parse( localStorage.getItem('listaMarkers') || "[]");
-    storeMarker(markersRecuperados,markers)
-    markersRecuperados.forEach(coord=> addMarker(coord));
+  
+  const markersRecuperados = JSON.parse( localStorage.getItem('listaMarkers') || "[]");
+  storeMarker(markersRecuperados,markers)
+  markersRecuperados.forEach(coord=> addMarker(coord));
 
-    console.log(markersRecuperados);
+  console.log(markersRecuperados);
+   
+   
+
+
   }
 
 

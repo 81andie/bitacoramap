@@ -9,6 +9,7 @@ import { Header } from './components/Header';
 import { Panel } from './components/Panel';
 import { MarkersProvider } from './components/MarkersProvider';
 
+
 function App() {
   return (
     <div className="App">
