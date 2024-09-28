@@ -7,18 +7,17 @@ import './components/Panel.css';
 import { Mapa } from './components/Mapa';
 import { Header } from './components/Header';
 import { Panel } from './components/Panel';
-import { MarkersProvider } from './components/MarkersProvider';
-
+import { MarcadoresProviders } from './components/MarcadoresProviders';
 
 function App() {
   return (
     <div className="App">
 
-      <MarkersProvider>
+      <MarcadoresProviders>
       <Header/>
       <Panel/>
       <Mapa/>
-      </MarkersProvider>
+    </MarcadoresProviders>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import "ol/ol.css";
 import Map from 'ol/Map.js';
 import OSM from 'ol/source/OSM.js';
@@ -10,7 +10,7 @@ import Point from 'ol/geom/Point.js';
 import { Vector as VectorLayer } from 'ol/layer';
 import VectorSource from 'ol/source/Vector';
 import { Icon, Style } from 'ol/style.js';
-import { useMarkerContext, useStoreMarkersContext } from './MarkersProvider';
+import { useMarkerContext, useStoreMarkersContext } from './MarcadoresProviders';
 
 
 export const Mapa = () => {
