@@ -10,8 +10,8 @@ import Point from 'ol/geom/Point.js';
 import { Vector as VectorLayer } from 'ol/layer';
 import VectorSource from 'ol/source/Vector';
 import { Icon, Style } from 'ol/style.js';
-import { useMarkerContext, useStoreMarkersContext} from './MarkersProvider';
-import { v4 as uuidv4 } from 'uuid';
+import { useMarkerContext, useStoreMarkersContext } from './MarkersProvider';
+
 
 export const Mapa = () => {
 
@@ -19,7 +19,7 @@ export const Mapa = () => {
   const storeMarker = useStoreMarkersContext();
 
 
-console.log(markers);
+
 
   let map;
 
@@ -38,10 +38,7 @@ console.log(markers);
       const view = map.getView();
       const zoom = view.getZoom();
       view.setZoom(zoom - 1);
-
       console.log("zoom out");
-
-
     }
 
   }
@@ -71,7 +68,11 @@ console.log(markers);
           zoom: 18,
         }),
 
-      }, []);
+      }
+      
+      ,[]);
+
+   
 
     map.on('moveend', () => {
       console.log(map.getView().getCenter());
@@ -81,7 +82,7 @@ console.log(markers);
 
 
     map.on('click', function (evt) {
-     
+
       storeMarker(evt.coordinate);
       addMarker(evt.coordinate);
 
@@ -100,6 +101,8 @@ console.log(markers);
         
         */
 
+        obtenerMarkers()
+
     map.addLayer(vectorLayer);
 
     /*
@@ -112,7 +115,7 @@ console.log(markers);
 
     */
 
-    obtenerMarkers();
+    //obtenerMarkers();
 
 
     return () => {
@@ -123,12 +126,12 @@ console.log(markers);
 
   const addMarker = (coordinate) => {
 
-    
+
 
     const startMarker = new Feature({
       type: 'point',
       geometry: new Point(coordinate),
-      
+
 
     });
 
@@ -141,7 +144,7 @@ console.log(markers);
     }))
 
     vectorSource.addFeature(startMarker);
-    
+
 
   }
 
@@ -149,21 +152,18 @@ console.log(markers);
 
 
 
- const obtenerMarkers = () =>{
+  const obtenerMarkers = () => {
+
+    const markersRecuperados = JSON.parse(localStorage.getItem('listaMarkers') || "[]");
+    storeMarker(markers)
+    markersRecuperados.forEach(coord => addMarker(coord));
+    console.log(markersRecuperados);
+
+  }
+
+
+
   
-  const markersRecuperados = JSON.parse( localStorage.getItem('listaMarkers') || "[]");
-  storeMarker(markersRecuperados,markers)
-  markersRecuperados.forEach(coord=> addMarker(coord));
-
-  console.log(markersRecuperados);
-   
-   
-
-
-  }
-
-
-
 
 
 

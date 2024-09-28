@@ -1,6 +1,6 @@
 
 import React, { useState, useContext, useEffect } from "react";
-import { v4 as uuidv4 } from 'uuid';
+
 
 
 const markerContext = React.createContext();
@@ -42,6 +42,7 @@ export function MarkersProvider({ children }) {
           if (coordinate.length > 0) {
          // updatedMarkers = [...updatedMarkers, coordinate];
           updatedMarkers.push(coordinate);
+          setMarkers(updatedMarkers);
           localStorage.setItem("listaMarkers", JSON.stringify(updatedMarkers));
 
 
