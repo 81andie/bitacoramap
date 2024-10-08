@@ -15,8 +15,8 @@ import { useMarkerContext, useStoreMarkersContext } from './MarcadoresProviders'
 
 export const Mapa = () => {
 
-  const markers = useMarkerContext();
-  const storeMarker = useStoreMarkersContext();
+  const {markers, panelIsOpen} = useMarkerContext();
+  const {storeMarker, togglePanel} = useStoreMarkersContext();
 
 
 
@@ -85,8 +85,11 @@ export const Mapa = () => {
 
       storeMarker(evt.coordinate);
       addMarker(evt.coordinate);
-
-      console.log(markers);
+      
+      togglePanel();
+      console.log(panelIsOpen);
+      console.log("estos son los marcadores")
+      console.log( markers);
 
     });
 
@@ -156,6 +159,7 @@ export const Mapa = () => {
 
     const markersRecuperados = JSON.parse(localStorage.getItem('listaMarkers') || "[]");
     storeMarker(markers)
+   
     markersRecuperados.forEach(coord => addMarker(coord));
     console.log(markersRecuperados);
 

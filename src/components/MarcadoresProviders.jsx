@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 const markerContext = React.createContext();
 const storeMarkersContext = React.createContext();
 
+
 export function useMarkerContext() {
     return useContext(markerContext);
 }
@@ -15,6 +16,7 @@ export function useStoreMarkersContext() {
 export const MarcadoresProviders = ({ children }) => {
 
     const [markers, setMarkers] = useState([]);
+    const [panelIsOpen, setPanelIsOpen]= useState(false);
 
     const storeMarker = (coordinate = null) => {
         let storedMarkers = localStorage.getItem("listaMarkers");
@@ -27,9 +29,15 @@ export const MarcadoresProviders = ({ children }) => {
     }
 
 
+    const togglePanel =()=>{
+        console.log("togglePanel")
+        setPanelIsOpen(!panelIsOpen)
+    }
+
+
     return (
-        <markerContext.Provider value={{ markers }}>
-            <storeMarkersContext.Provider value={storeMarker}>
+        <markerContext.Provider value={{ markers, panelIsOpen }}>
+            <storeMarkersContext.Provider value={{storeMarker,togglePanel}}>
                 {children}
             </storeMarkersContext.Provider>
 
